@@ -1,0 +1,145 @@
+<mxfile host="app.diagrams.net" version="24.0.0">
+  <diagram name="Architecture" id="dataquality-ai-cloudera-target">
+    <mxGraphModel dx="960" dy="540" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="960" pageHeight="540" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="title" value="Data Quality AI — Target Architecture on Cloudera" style="text;html=1;fontSize=18;fontStyle=1;fontColor=#232F3E;align=center;" vertex="1" parent="1">
+          <mxGeometry x="180" y="6" width="600" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="An agent finds quality issues in incoming data feeds, then generates the Cloudera pipelines and policies that fix them" style="text;html=1;fontSize=11;fontColor=#5F6B7A;align=center;" vertex="1" parent="1">
+          <mxGeometry x="100" y="36" width="760" height="18" as="geometry" />
+        </mxCell>
+
+        <mxCell id="sources_lbl" value="SOURCES" style="text;html=1;fontSize=10;fontStyle=1;fontColor=#5F6B7A;align=center;" vertex="1" parent="1">
+          <mxGeometry x="24" y="92" width="120" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="src_partner" value="Partner feeds&#10;EDI · XML · JSON" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#8AA2B8;fontSize=11;fontColor=#232F3E;" vertex="1" parent="1">
+          <mxGeometry x="24" y="112" width="120" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="src_events" value="Events &amp; APIs&#10;Kafka · REST" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#8AA2B8;fontSize=11;fontColor=#232F3E;" vertex="1" parent="1">
+          <mxGeometry x="24" y="162" width="120" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="src_files" value="File drops&#10;SFTP · CSV · flat files" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#8AA2B8;fontSize=11;fontColor=#232F3E;" vertex="1" parent="1">
+          <mxGeometry x="24" y="212" width="120" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="src_db" value="Operational DBs&#10;CDC · Oracle · DB2" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#8AA2B8;fontSize=11;fontColor=#232F3E;" vertex="1" parent="1">
+          <mxGeometry x="24" y="262" width="120" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="src_ref" value="Reference data&#10;dictionaries · codes" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#8AA2B8;fontSize=11;fontColor=#232F3E;" vertex="1" parent="1">
+          <mxGeometry x="24" y="312" width="120" height="44" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cdp" value="Cloudera Data Platform — on-prem (OpenShift · NVIDIA H200) or public cloud" style="rounded=1;arcSize=5;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#F96702;strokeWidth=2;fontSize=14;fontStyle=1;fontColor=#F96702;verticalAlign=top;align=left;spacingLeft=14;spacingTop=6;" vertex="1" parent="1">
+          <mxGeometry x="160" y="62" width="776" height="338" as="geometry" />
+        </mxCell>
+        <mxCell id="pipeline_lbl" value="DATA PIPELINE — RUNS THE ARTIFACTS THE AGENT GENERATES" style="text;html=1;fontSize=10;fontStyle=1;fontColor=#5F6B7A;align=left;" vertex="1" parent="1">
+          <mxGeometry x="176" y="92" width="420" height="16" as="geometry" />
+        </mxCell>
+
+        <mxCell id="dataflow" value="&lt;b&gt;Cloudera DataFlow · NiFi&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#5F6B7A&quot; style=&quot;font-size:10px&quot;&gt;runs generated NiFi v2 flows&lt;br&gt;SFTP · API · Kafka · CDC → land&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#EEF3F8;strokeColor=#8AA2B8;fontSize=11;fontColor=#232F3E;" vertex="1" parent="1">
+          <mxGeometry x="176" y="112" width="174" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="iceberg" value="&lt;b&gt;Open Data Lakehouse&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#5F6B7A&quot; style=&quot;font-size:10px&quot;&gt;Apache Iceberg on Ozone / S3&lt;br&gt;raw → validated → curated&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#EEF3F8;strokeColor=#8AA2B8;fontSize=11;fontColor=#232F3E;" vertex="1" parent="1">
+          <mxGeometry x="366" y="112" width="174" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="cde" value="&lt;b&gt;Cloudera Data Engineering&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#5F6B7A&quot; style=&quot;font-size:10px&quot;&gt;runs generated Spark jobs&lt;br&gt;cleanse · dedupe · conform&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#EEF3F8;strokeColor=#8AA2B8;fontSize=11;fontColor=#232F3E;" vertex="1" parent="1">
+          <mxGeometry x="556" y="112" width="174" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="cdw" value="&lt;b&gt;Cloudera Data Warehouse&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#5F6B7A&quot; style=&quot;font-size:10px&quot;&gt;Impala on curated Iceberg&lt;br&gt;trusted data for BI and AI&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#EEF3F8;strokeColor=#8AA2B8;fontSize=11;fontColor=#232F3E;" vertex="1" parent="1">
+          <mxGeometry x="746" y="112" width="174" height="74" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e_src_df" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#5F6B7A;strokeWidth=1.6;" edge="1" parent="1" source="src_events" target="dataflow">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_df_ice" style="edgeStyle=none;html=1;endArrow=block;strokeColor=#5F6B7A;strokeWidth=1.6;" edge="1" parent="1" source="dataflow" target="iceberg">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_ice_cde" style="edgeStyle=none;html=1;endArrow=block;strokeColor=#5F6B7A;strokeWidth=1.6;" edge="1" parent="1" source="iceberg" target="cde">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_cde_cdw" style="edgeStyle=none;html=1;endArrow=block;strokeColor=#5F6B7A;strokeWidth=1.6;" edge="1" parent="1" source="cde" target="cdw">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="agent" value="Cloudera AI — Data Quality Agent (Application)" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#FDF3EC;strokeColor=#E0B394;strokeWidth=1.5;fontSize=12;fontStyle=1;fontColor=#232F3E;verticalAlign=top;align=left;spacingLeft=12;spacingTop=4;" vertex="1" parent="1">
+          <mxGeometry x="176" y="226" width="500" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="a_profile" value="&lt;b&gt;Profile · detect&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#5F6B7A&quot; style=&quot;font-size:10px&quot;&gt;SQL on samples&lt;/font&gt;" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0B394;fontSize=11;fontColor=#232F3E;" vertex="1" parent="1">
+          <mxGeometry x="188" y="258" width="112" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="a_classify" value="&lt;b&gt;Classify&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#5F6B7A&quot; style=&quot;font-size:10px&quot;&gt;PII · sensitivity tags&lt;/font&gt;" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0B394;fontSize=11;fontColor=#232F3E;" vertex="1" parent="1">
+          <mxGeometry x="310" y="258" width="112" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="a_generate" value="&lt;b&gt;Generate fixes&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#5F6B7A&quot; style=&quot;font-size:10px&quot;&gt;NiFi · Spark · YAML&lt;/font&gt;" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0B394;fontSize=11;fontColor=#232F3E;" vertex="1" parent="1">
+          <mxGeometry x="432" y="258" width="112" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="a_version" value="&lt;b&gt;Version · review&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#5F6B7A&quot; style=&quot;font-size:10px&quot;&gt;asset history&lt;/font&gt;" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0B394;fontSize=11;fontColor=#232F3E;" vertex="1" parent="1">
+          <mxGeometry x="554" y="258" width="112" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="e_a1_a2" style="edgeStyle=none;html=1;endArrow=block;strokeColor=#5F6B7A;strokeWidth=1.4;" edge="1" parent="1" source="a_profile" target="a_classify">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_a2_a3" style="edgeStyle=none;html=1;endArrow=block;strokeColor=#5F6B7A;strokeWidth=1.4;" edge="1" parent="1" source="a_classify" target="a_generate">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_a3_a4" style="edgeStyle=none;html=1;endArrow=block;strokeColor=#5F6B7A;strokeWidth=1.4;" edge="1" parent="1" source="a_generate" target="a_version">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="inference" value="&lt;b&gt;Cloudera AI Inference&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#5F6B7A&quot; style=&quot;font-size:10px&quot;&gt;NVIDIA NIM on H200 GPUs&lt;br&gt;OpenAI-compatible · tool calling&lt;br&gt;agent + classifier fallback&lt;/font&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#EEF3F8;strokeColor=#8AA2B8;fontSize=12;fontColor=#232F3E;" vertex="1" parent="1">
+          <mxGeometry x="700" y="226" width="220" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="e_agent_inf" style="edgeStyle=none;html=1;endArrow=block;strokeColor=#F96702;strokeWidth=1.8;" edge="1" parent="1" source="agent" target="inference">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e_ice_agent" value="read samples" style="edgeStyle=none;html=1;endArrow=block;strokeColor=#5F6B7A;strokeWidth=1.6;fontSize=10;fontColor=#5F6B7A;labelPosition=right;align=left;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="420" y="186" as="sourcePoint" />
+            <mxPoint x="420" y="226" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_agent_df" value="deploy flow" style="edgeStyle=none;html=1;endArrow=block;strokeColor=#F96702;strokeWidth=1.8;dashed=1;fontSize=10;fontColor=#F96702;labelPosition=right;align=left;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="250" y="226" as="sourcePoint" />
+            <mxPoint x="250" y="186" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_agent_cde" value="deploy job" style="edgeStyle=none;html=1;endArrow=block;strokeColor=#F96702;strokeWidth=1.8;dashed=1;fontSize=10;fontColor=#F96702;labelPosition=right;align=left;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="600" y="226" as="sourcePoint" />
+            <mxPoint x="600" y="186" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="sdx" value="&lt;b&gt;SDX&lt;/b&gt; — Atlas: lineage + data dictionary · Ranger: tag-based PII / sensitive-data masking · audit" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;spacingLeft=124;fillColor=#EEF3F8;strokeColor=#8AA2B8;fontSize=11;fontColor=#232F3E;" vertex="1" parent="1">
+          <mxGeometry x="176" y="346" width="744" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="e_agent_sdx" value="tags · dictionary" style="edgeStyle=none;html=1;endArrow=block;strokeColor=#F96702;strokeWidth=1.8;dashed=1;fontSize=10;fontColor=#F96702;labelPosition=right;align=left;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="620" y="322" as="sourcePoint" />
+            <mxPoint x="620" y="346" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="stewards" value="Data stewards · engineers&#10;review issues · approve fixes" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#FDF3EC;strokeColor=#F96702;strokeWidth=1.5;fontSize=14;fontColor=#232F3E;" vertex="1" parent="1">
+          <mxGeometry x="176" y="440" width="240" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="e_stewards_agent" style="edgeStyle=none;html=1;endArrow=block;strokeColor=#F96702;strokeWidth=1.8;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="296" y="440" as="sourcePoint" />
+            <mxPoint x="296" y="322" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="footer" value="Demo today → Cloudera: file upload → DataFlow landing · DuckDB → Iceberg&#10;Demo dataset: healthcare eligibility (AGT) — the pattern applies to any industry&#10;Dashed orange = artifacts the agent generates and deploys" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#C3CCD6;fontSize=11;fontColor=#5F6B7A;" vertex="1" parent="1">
+          <mxGeometry x="440" y="436" width="496" height="62" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

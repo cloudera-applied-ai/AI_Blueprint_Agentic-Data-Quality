@@ -1,0 +1,749 @@
+``` json
+[
+  {
+    "Position": 1,
+    "Field Name": "MBRKEY",
+    "Max Length": 32,
+    "FullName (Business Friendly Names)": "memberKey"
+  },
+  {
+    "Position": 2,
+    "Field Name": "SSN",
+    "Max Length": 9,
+    "FullName (Business Friendly Names)": "socialSecurityNumber"
+  },
+  {
+    "Position": 3,
+    "Field Name": "SBSCRBRID",
+    "Max Length": 15,
+    "FullName (Business Friendly Names)": "subscriberId"
+  },
+  {
+    "Position": 4,
+    "Field Name": "EMPIID",
+    "Max Length": 30,
+    "FullName (Business Friendly Names)": "employeeId"
+  },
+  {
+    "Position": 5,
+    "Field Name": "FRSTNM",
+    "Max Length": 50,
+    "FullName (Business Friendly Names)": "firstName"
+  },
+  {
+    "Position": 6,
+    "Field Name": "MIDINITNM",
+    "Max Length": 25,
+    "FullName (Business Friendly Names)": "middleInitial"
+  },
+  {
+    "Position": 7,
+    "Field Name": "LASTNM",
+    "Max Length": 50,
+    "FullName (Business Friendly Names)": "lastName"
+  },
+  {
+    "Position": 8,
+    "Field Name": "MBRSQNCNBR",
+    "Max Length": 15,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 9,
+    "Field Name": "MBRRLTNSHPCD",
+    "Max Length": 3,
+    "FullName (Business Friendly Names)": "memberRelationshipCode"
+  },
+  {
+    "Position": 10,
+    "Field Name": "BRTHDT",
+    "Max Length": 8,
+    "FullName (Business Friendly Names)": "birthDate"
+  },
+  {
+    "Position": 11,
+    "Field Name": "GNDRCD",
+    "Max Length": 3,
+    "FullName (Business Friendly Names)": "genderCode"
+  },
+  {
+    "Position": 12,
+    "Field Name": "MRTLSTTSCD",
+    "Max Length": 3,
+    "FullName (Business Friendly Names)": "MaritalStatusCd"
+  },
+  {
+    "Position": 13,
+    "Field Name": "MBRORGNLEFCTVDT",
+    "Max Length": 8,
+    "FullName (Business Friendly Names)": "memberOrignalEffectiveDate"
+  },
+  {
+    "Position": 14,
+    "Field Name": "blank1",
+    "Max Length": 3,
+    "FullName (Business Friendly Names)": "blank1"
+  },
+  {
+    "Position": 15,
+    "Field Name": "SRCMBRCD",
+    "Max Length": 3,
+    "FullName (Business Friendly Names)": "sourceMemberCd"
+  },
+  {
+    "Position": 16,
+    "Field Name": "MBRSHPSORCD",
+    "Max Length": 10,
+    "FullName (Business Friendly Names)": "memberSponsorshipCode"
+  },
+  {
+    "Position": 17,
+    "Field Name": "SRCGRPNBR",
+    "Max Length": 15,
+    "FullName (Business Friendly Names)": "SourceGroupNumber"
+  },
+  {
+    "Position": 18,
+    "Field Name": "EMAILADRSTXT",
+    "Max Length": 50,
+    "FullName (Business Friendly Names)": "emailAddress"
+  },
+  {
+    "Position": 19,
+    "Field Name": "PRMRYPHONENBR",
+    "Max Length": 10,
+    "FullName (Business Friendly Names)": "primaryPhone"
+  },
+  {
+    "Position": 20,
+    "Field Name": "ALTPHONENBR",
+    "Max Length": 10,
+    "FullName (Business Friendly Names)": "AlternatePhone"
+  },
+  {
+    "Position": 21,
+    "Field Name": "LINE1ADRSTXT",
+    "Max Length": 100,
+    "FullName (Business Friendly Names)": "address1"
+  },
+  {
+    "Position": 22,
+    "Field Name": "LINE2ADRSTXT",
+    "Max Length": 100,
+    "FullName (Business Friendly Names)": "address2"
+  },
+  {
+    "Position": 23,
+    "Field Name": "CITYNM",
+    "Max Length": 50,
+    "FullName (Business Friendly Names)": "cityName"
+  },
+  {
+    "Position": 24,
+    "Field Name": "STPRVNCCD",
+    "Max Length": 3,
+    "FullName (Business Friendly Names)": "stateProvinceCode"
+  },
+  {
+    "Position": 25,
+    "Field Name": "ZIPCD",
+    "Max Length": 6,
+    "FullName (Business Friendly Names)": "zipCode"
+  },
+  {
+    "Position": 26,
+    "Field Name": "ZIPPLUS4CD",
+    "Max Length": 4,
+    "FullName (Business Friendly Names)": "zipPlusCode"
+  },
+  {
+    "Position": 27,
+    "Field Name": "ADRSTYPECD",
+    "Max Length": 10,
+    "FullName (Business Friendly Names)": "addressTypeCode"
+  },
+  {
+    "Position": 28,
+    "Field Name": "MBRADRSEFCTVDT",
+    "Max Length": 8,
+    "FullName (Business Friendly Names)": "memberAddressEffectiveDate"
+  },
+  {
+    "Position": 29,
+    "Field Name": "MBRADRSTRMNTNDT",
+    "Max Length": 8,
+    "FullName (Business Friendly Names)": "memberAddressTreatmentInd"
+  },
+  {
+    "Position": 30,
+    "Field Name": "CNTRYCD",
+    "Max Length": 3,
+    "FullName (Business Friendly Names)": "countryCode"
+  },
+  {
+    "Position": 31,
+    "Field Name": "TLPHNCNTRYCD",
+    "Max Length": 3,
+    "FullName (Business Friendly Names)": "TelephoneCountryCode"
+  },
+  {
+    "Position": 32,
+    "Field Name": "COBCD",
+    "Max Length": 5,
+    "FullName (Business Friendly Names)": "CobCd"
+  },
+  {
+    "Position": 33,
+    "Field Name": "COBEFCTVDT",
+    "Max Length": 8,
+    "FullName (Business Friendly Names)": "CobEffectiveDt"
+  },
+  {
+    "Position": 34,
+    "Field Name": "COBTRMNTNDT",
+    "Max Length": 8,
+    "FullName (Business Friendly Names)": "CobTerminationDt"
+  },
+  {
+    "Position": 35,
+    "Field Name": "OPLORDRCD",
+    "Max Length": 3,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 36,
+    "Field Name": "OTHRINSRNCTYPECD",
+    "Max Length": 10,
+    "FullName (Business Friendly Names)": "OtherInsuranceTypeCode"
+  },
+  {
+    "Position": 37,
+    "Field Name": "ETHNCTYCD",
+    "Max Length": 10,
+    "FullName (Business Friendly Names)": "ethnicityCode"
+  },
+  {
+    "Position": 38,
+    "Field Name": "SPOKENLANGCDVAL",
+    "Max Length": 10,
+    "FullName (Business Friendly Names)": "spokenLangValue"
+  },
+  {
+    "Position": 39,
+    "Field Name": "WRITTENLANGCDVAL",
+    "Max Length": 10,
+    "FullName (Business Friendly Names)": "writtenLangValue"
+  },
+  {
+    "Position": 40,
+    "Field Name": "PROVID",
+    "Max Length": 16,
+    "FullName (Business Friendly Names)": "provider ID"
+  },
+  {
+    "Position": 41,
+    "Field Name": "PCPEFCTVDT",
+    "Max Length": 8,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 42,
+    "Field Name": "PCPTRMNTNDT",
+    "Max Length": 8,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 43,
+    "Field Name": "ENRLMNTEFCTVDT",
+    "Max Length": 8,
+    "FullName (Business Friendly Names)": "enrollmentEffectiveDate"
+  },
+  {
+    "Position": 44,
+    "Field Name": "ENRLMNTTRMNTNDT",
+    "Max Length": 8,
+    "FullName (Business Friendly Names)": "enrollmentTerminationDate"
+  },
+  {
+    "Position": 45,
+    "Field Name": "CNTRCTTYPECD",
+    "Max Length": 5,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 46,
+    "Field Name": "RISKRATGTIERCD",
+    "Max Length": 5,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 47,
+    "Field Name": "MDCLCVRGINDCD",
+    "Max Length": 10,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 48,
+    "Field Name": "PHRMCYCVRGINDCD",
+    "Max Length": 10,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 49,
+    "Field Name": "RCRDSTTSCD",
+    "Max Length": 3,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 50,
+    "Field Name": "DUPDATACD",
+    "Max Length": 10,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 51,
+    "Field Name": "HCID",
+    "Max Length": 20,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 52,
+    "Field Name": "CMPNYSTCD",
+    "Max Length": 3,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 53,
+    "Field Name": "CMPNYCFCD",
+    "Max Length": 5,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 54,
+    "Field Name": "MBUCFCD",
+    "Max Length": 6,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 55,
+    "Field Name": "FUNDGCFCD",
+    "Max Length": 3,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 56,
+    "Field Name": "PRODCFCD",
+    "Max Length": 5,
+    "FullName (Business Friendly Names)": "ProductCode?"
+  },
+  {
+    "Position": 57,
+    "Field Name": "DTLPRODCFCD",
+    "Max Length": 5,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 58,
+    "Field Name": "MBRCOAEFCTVDT",
+    "Max Length": 8,
+    "FullName (Business Friendly Names)": "memberCoapplicantEffectiveDate?"
+  },
+  {
+    "Position": 59,
+    "Field Name": "MBRCOATRMNTNDT",
+    "Max Length": 8,
+    "FullName (Business Friendly Names)": "memberCoapplicantTerminationDate?"
+  },
+  {
+    "Position": 60,
+    "Field Name": "RPTGBRNDLOGOCD",
+    "Max Length": 3,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 61,
+    "Field Name": "MCID",
+    "Max Length": 20,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 62,
+    "Field Name": "FIPSCNTYCD",
+    "Max Length": 5,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 63,
+    "Field Name": "SRCCLNTID",
+    "Max Length": 15,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 64,
+    "Field Name": "SRCSUBGRPNBR",
+    "Max Length": 15,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 65,
+    "Field Name": "PRCHSRORGNBR",
+    "Max Length": 80,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 66,
+    "Field Name": "PRCHSRORGTYPECD",
+    "Max Length": 5,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 67,
+    "Field Name": "PRCHSRORGEFCTVDT",
+    "Max Length": 8,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 68,
+    "Field Name": "PRCHSRORGTRMNTNDT",
+    "Max Length": 8,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 69,
+    "Field Name": "CNTRLPLANCD",
+    "Max Length": 3,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 70,
+    "Field Name": "PRCHSRORGNM",
+    "Max Length": 100,
+    "FullName (Business Friendly Names)": "PurchaserOrgName?"
+  },
+  {
+    "Position": 71,
+    "Field Name": "SGRPNM",
+    "Max Length": 100,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 72,
+    "Field Name": "RNWLDT",
+    "Max Length": 8,
+    "FullName (Business Friendly Names)": "RenewalDate"
+  },
+  {
+    "Position": 73,
+    "Field Name": "SICCD",
+    "Max Length": 4,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 74,
+    "Field Name": "PKGNBR",
+    "Max Length": 8,
+    "FullName (Business Friendly Names)": "packageNumber"
+  },
+  {
+    "Position": 75,
+    "Field Name": "RLTDPRCHSRORGNBR",
+    "Max Length": 80,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 76,
+    "Field Name": "ALPHPRFXID",
+    "Max Length": 3,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 77,
+    "Field Name": "PRODOFRGEFCTVDT",
+    "Max Length": 8,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 78,
+    "Field Name": "PRODOFRGTRMNTNDT",
+    "Max Length": 8,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 79,
+    "Field Name": "BNFTPKGKEY",
+    "Max Length": 32,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 80,
+    "Field Name": "PRODOFRGKEY",
+    "Max Length": 32,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 81,
+    "Field Name": "blank",
+    "Max Length": 100,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 82,
+    "Field Name": "BNFTPKGEFCTVDT",
+    "Max Length": 8,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 83,
+    "Field Name": "BNFTPKGTRMNTNDT",
+    "Max Length": 8,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 84,
+    "Field Name": "HLTHPGMBNFTPKGID",
+    "Max Length": 25,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 85,
+    "Field Name": "ENRID",
+    "Max Length": 30,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 86,
+    "Field Name": "EMPID",
+    "Max Length": 30,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 87,
+    "Field Name": "MCRID",
+    "Max Length": 30,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 88,
+    "Field Name": "FAMID",
+    "Max Length": 30,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 89,
+    "Field Name": "BENID",
+    "Max Length": 30,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 90,
+    "Field Name": "STMID",
+    "Max Length": 30,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 91,
+    "Field Name": "MCDID",
+    "Max Length": 30,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 92,
+    "Field Name": "NBRID",
+    "Max Length": 30,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 93,
+    "Field Name": "PRCHSRORGCTGYTYPECD",
+    "Max Length": 15,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 94,
+    "Field Name": "ELGBLGRPSIZENBR",
+    "Max Length": 15,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 95,
+    "Field Name": "COBRACD",
+    "Max Length": 10,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 96,
+    "Field Name": "COBRAEFCTVDT",
+    "Max Length": 8,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 97,
+    "Field Name": "EMPLYMNTSTTSCD",
+    "Max Length": 3,
+    "FullName (Business Friendly Names)": "EmpStatusCd"
+  },
+  {
+    "Position": 98,
+    "Field Name": "EMPLYMNTEFCTVDT",
+    "Max Length": 8,
+    "FullName (Business Friendly Names)": "EmpEffectiveDate"
+  },
+  {
+    "Position": 99,
+    "Field Name": "HIREDT",
+    "Max Length": 8,
+    "FullName (Business Friendly Names)": "HireDate"
+  },
+  {
+    "Position": 100,
+    "Field Name": "PRODTYPECD",
+    "Max Length": 10,
+    "FullName (Business Friendly Names)": "ProductTypeCd"
+  },
+  {
+    "Position": 101,
+    "Field Name": "SERIOUSHLTHCNDTNCD",
+    "Max Length": 10,
+    "FullName (Business Friendly Names)": "SeriousHealthConditionCd"
+  },
+  {
+    "Position": 102,
+    "Field Name": "MEDCRSTTSCD",
+    "Max Length": 10,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 103,
+    "Field Name": "INSRNCCARRNM",
+    "Max Length": 75,
+    "FullName (Business Friendly Names)": "InsuranceCarrierName"
+  },
+  {
+    "Position": 104,
+    "Field Name": "GROUPLINE1ADRSTXT",
+    "Max Length": 100,
+    "FullName (Business Friendly Names)": "GroupAddressLine1Text"
+  },
+  {
+    "Position": 105,
+    "Field Name": "GROUPLINE2ADRSTXT",
+    "Max Length": 100,
+    "FullName (Business Friendly Names)": "GroupAddressLine2Text"
+  },
+  {
+    "Position": 106,
+    "Field Name": "GROUPCITYNM",
+    "Max Length": 50,
+    "FullName (Business Friendly Names)": "GroupCityNm"
+  },
+  {
+    "Position": 107,
+    "Field Name": "GROUPSTPRVNCCD",
+    "Max Length": 3,
+    "FullName (Business Friendly Names)": "GroupStateCd"
+  },
+  {
+    "Position": 108,
+    "Field Name": "GROUPZIPCD",
+    "Max Length": 6,
+    "FullName (Business Friendly Names)": "GroupZipCd"
+  },
+  {
+    "Position": 109,
+    "Field Name": "GROUPZIPPLUS4CD",
+    "Max Length": 4,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 110,
+    "Field Name": "GROUPPHONENBR",
+    "Max Length": 10,
+    "FullName (Business Friendly Names)": "GroupPhoneNumber"
+  },
+  {
+    "Position": 111,
+    "Field Name": "MDCDRISKPPLTNCD",
+    "Max Length": 10,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 112,
+    "Field Name": "SRCAIDCTGRYCD",
+    "Max Length": 15,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 113,
+    "Field Name": "SRCCNTYCD",
+    "Max Length": 6,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 114,
+    "Field Name": "SRCRGNCD",
+    "Max Length": 5,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 115,
+    "Field Name": "SRCRTCELLCD",
+    "Max Length": 15,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 116,
+    "Field Name": "SRCSTAIDPGMCD",
+    "Max Length": 15,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 117,
+    "Field Name": "STRTTYPECD",
+    "Max Length": 10,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 118,
+    "Field Name": "SRCMDCDPGMTYPECD",
+    "Max Length": 10,
+    "FullName (Business Friendly Names)": "SourceMedicaidProgramTypeCd"
+  },
+  {
+    "Position": 119,
+    "Field Name": "PROVSORCD",
+    "Max Length": 10,
+    "FullName (Business Friendly Names)": ""
+  },
+  {
+    "Position": 120,
+    "Field Name": "DCESDDT",
+    "Max Length": 8,
+    "FullName (Business Friendly Names)": "DeceasedDt"
+  },
+  {
+    "Position": 121,
+    "Field Name": "MEDCRNBR",
+    "Max Length": 20,
+    "FullName (Business Friendly Names)": "MedicareNumber"
+  },
+  {
+    "Position": 122,
+    "Field Name": "SFXNM",
+    "Max Length": 10,
+    "FullName (Business Friendly Names)": "SurixNm"
+  },
+  {
+    "Position": 123,
+    "Field Name": "MBRPRODUCTCD",
+    "Max Length": 8,
+    "FullName (Business Friendly Names)": "MemberProductCd"
+  },
+  {
+    "Position": 124,
+    "Field Name": "MBRMARKETCD",
+    "Max Length": 8,
+    "FullName (Business Friendly Names)": "MemberMarketCd"
+  }
+]
+
+```

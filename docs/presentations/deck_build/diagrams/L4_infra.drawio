@@ -1,0 +1,176 @@
+<mxfile host="app.diagrams.net" modified="2026-04-20T00:00:00.000Z" agent="claude" version="24.0.0" type="device">
+  <diagram id="L4" name="L4-Deploy-Topology">
+    <mxGraphModel dx="1700" dy="820" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1700" pageHeight="820" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Top: User flow -->
+        <mxCell id="u_lbl" value="USER REQUEST PATH" style="text;html=1;strokeColor=none;fillColor=none;align=left;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fontStyle=1;fontColor=#FF550C;" vertex="1" parent="1">
+          <mxGeometry x="20" y="15" width="300" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="u_bx" value="" style="rounded=1;fillColor=#F5F6F7;strokeColor=#9E9E9E;" vertex="1" parent="1">
+          <mxGeometry x="20" y="40" width="1670" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="u1" value="User browser&#10;HTTPS · SSE" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#100045;fontFamily=Arial;fontSize=13;fontStyle=1;fontColor=#100045;" vertex="1" parent="1">
+          <mxGeometry x="35" y="55" width="220" height="58" as="geometry" />
+        </mxCell>
+        <mxCell id="u2" value="Cloudera AI app URL&#10;(TLS terminated by platform)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#100045;strokeColor=#100045;fontFamily=Arial;fontSize=13;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="265" y="55" width="300" height="58" as="geometry" />
+        </mxCell>
+        <mxCell id="u3" value="CDSW auth + reverse proxy&#10;routes to CDSW_APP_PORT on session" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF550C;strokeColor=#FF550C;fontFamily=Arial;fontSize=13;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="575" y="55" width="340" height="58" as="geometry" />
+        </mxCell>
+        <mxCell id="u4" value="Frontend (SPA)&#10;Vite /api proxy to backend" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#100045;fontFamily=Arial;fontSize=13;fontColor=#100045;" vertex="1" parent="1">
+          <mxGeometry x="925" y="55" width="280" height="58" as="geometry" />
+        </mxCell>
+        <mxCell id="u5" value="Backend (FastAPI)&#10;loopback 127.0.0.1:8090" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#100045;fontFamily=Arial;fontSize=13;fontColor=#100045;" vertex="1" parent="1">
+          <mxGeometry x="1215" y="55" width="300" height="58" as="geometry" />
+        </mxCell>
+
+        <!-- Cloudera AI session main box -->
+        <mxCell id="s_lbl" value="CLOUDERA AI SESSION · JupyterLab Python 3.12 · /home/cdsw" style="text;html=1;strokeColor=none;fillColor=none;align=left;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fontStyle=1;fontColor=#FF550C;" vertex="1" parent="1">
+          <mxGeometry x="20" y="135" width="800" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="s_bx" value="" style="rounded=1;fillColor=#F5F6F7;strokeColor=#100045;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="20" y="160" width="1140" height="500" as="geometry" />
+        </mxCell>
+
+        <!-- launch.py supervisor -->
+        <mxCell id="lp_lbl" value="launch.py · detects CDSW via CDSW_APP_PORT / /home/cdsw · supervises processes" style="text;html=1;strokeColor=none;fillColor=none;align=left;whiteSpace=wrap;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#100045;" vertex="1" parent="1">
+          <mxGeometry x="35" y="175" width="1100" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="lp" value="" style="rounded=1;fillColor=#1F2A32;strokeColor=#1F2A32;" vertex="1" parent="1">
+          <mxGeometry x="35" y="195" width="1110" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="lp1" value="signal handling · graceful shutdown · backend subprocess · frontend dev-server subprocess" style="text;html=1;strokeColor=none;fillColor=none;align=center;whiteSpace=wrap;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="45" y="200" width="1090" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Frontend / Backend processes -->
+        <mxCell id="fe_bx" value="" style="rounded=1;fillColor=#FFFFFF;strokeColor=#100045;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="35" y="245" width="540" height="195" as="geometry" />
+        </mxCell>
+        <mxCell id="fe_h" value="Frontend process · Vite dev server (or nginx in prod)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#100045;strokeColor=#100045;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#FFFFFF;align=left;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="35" y="245" width="540" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="fe_b" value="• Binds 0.0.0.0:${CDSW_APP_PORT} (Cloudera exposes this)&#10;• Serves built SPA (prod) or hot-reload src/ (dev)&#10;• /api proxy → http://127.0.0.1:8090&#10;• allowedHosts: 'all' for CDSW proxy domain&#10;• SSE over the proxy works without buffering tweaks" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#100045;fontFamily=Arial;fontSize=11;fontColor=#100045;align=left;verticalAlign=top;spacingLeft=14;spacingTop=8;" vertex="1" parent="1">
+          <mxGeometry x="35" y="273" width="540" height="166" as="geometry" />
+        </mxCell>
+
+        <mxCell id="be_bx" value="" style="rounded=1;fillColor=#FFFFFF;strokeColor=#100045;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="605" y="245" width="540" height="195" as="geometry" />
+        </mxCell>
+        <mxCell id="be_h" value="Backend process · FastAPI + Uvicorn" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FF550C;strokeColor=#FF550C;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#FFFFFF;align=left;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="605" y="245" width="540" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="be_b" value="• Binds 127.0.0.1:8090 (loopback only · not exposed)&#10;• Only reachable via the frontend proxy or localhost&#10;• Exposes /api/* routes · SSE chat · health probe&#10;• Embedded engine (DuckDB) in-process&#10;• Reads &amp; writes under the session filesystem&#10;• Calls LLM endpoint out over HTTPS (Bearer JWT)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FF550C;fontFamily=Arial;fontSize=11;fontColor=#100045;align=left;verticalAlign=top;spacingLeft=14;spacingTop=8;" vertex="1" parent="1">
+          <mxGeometry x="605" y="273" width="540" height="166" as="geometry" />
+        </mxCell>
+
+        <!-- Filesystem -->
+        <mxCell id="fs_lbl" value="Session filesystem · /home/cdsw/&lt;project&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;whiteSpace=wrap;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#100045;" vertex="1" parent="1">
+          <mxGeometry x="35" y="450" width="800" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="fs1" value="Input data &amp; metadata&#10;(project dir, user-uploaded, or Iceberg read)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#5555F9;fontFamily=Arial;fontSize=11;fontColor=#100045;" vertex="1" parent="1">
+          <mxGeometry x="35" y="475" width="350" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="fs2" value="Artifact output dirs&#10;one per artifact type · versioned" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#5555F9;fontFamily=Arial;fontSize=11;fontColor=#100045;" vertex="1" parent="1">
+          <mxGeometry x="395" y="475" width="370" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="fs3" value="Runtime settings &amp; state&#10;(last LLM config etc.)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#5555F9;fontFamily=Arial;fontSize=11;fontColor=#100045;" vertex="1" parent="1">
+          <mxGeometry x="775" y="475" width="360" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="fs4" value="Model assets (if any)&#10;sklearn · transformers · embeddings" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#5555F9;fontFamily=Arial;fontSize=11;fontColor=#100045;" vertex="1" parent="1">
+          <mxGeometry x="35" y="535" width="350" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="fs5" value="Dependencies&#10;node_modules · site-packages" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#5555F9;fontFamily=Arial;fontSize=11;fontColor=#100045;" vertex="1" parent="1">
+          <mxGeometry x="395" y="535" width="370" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="fs6" value="/tmp/jwt · CDP access token (mounted)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF5F0;strokeColor=#FF550C;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#100045;" vertex="1" parent="1">
+          <mxGeometry x="775" y="535" width="360" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Env vars strip -->
+        <mxCell id="ev_lbl" value="Environment (read by config module)" style="text;html=1;strokeColor=none;fillColor=none;align=left;whiteSpace=wrap;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#100045;" vertex="1" parent="1">
+          <mxGeometry x="35" y="600" width="600" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="ev1" value="CDSW_APP_PORT · CLOUDERA_AI_URL · CLOUDERA_AI_MODEL · CLOUDERA_AI_KEY · LLM_ENDPOINT_TYPE · HOME" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1F2A32;strokeColor=#1F2A32;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="35" y="622" width="1100" height="28" as="geometry" />
+        </mxCell>
+
+        <!-- Right top: LLM endpoint -->
+        <mxCell id="llm_lbl" value="LLM ENDPOINT · Cloudera AI Inference" style="text;html=1;strokeColor=none;fillColor=none;align=left;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fontStyle=1;fontColor=#FF550C;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="135" width="500" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="llm_bx" value="" style="rounded=1;fillColor=#FFF5F0;strokeColor=#FF550C;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="160" width="510" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="llm1" value="Cloudera AI Inference Service&#10;NVIDIA NIM on H200 · OpenAI-compatible&#10;POST /v1/chat/completions · Bearer JWT (/tmp/jwt)&#10;model catalog pulled from NGC / Cloudera" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FF550C;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#100045;" vertex="1" parent="1">
+          <mxGeometry x="1195" y="175" width="480" height="95" as="geometry" />
+        </mxCell>
+
+        <!-- Right middle: NiFi source systems (what the generated flow pulls from) -->
+        <mxCell id="nfs_lbl" value="NIFI-FLOW SOURCE SYSTEMS" style="text;html=1;strokeColor=none;fillColor=none;align=left;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fontStyle=1;fontColor=#FF550C;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="290" width="500" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="nfs_sub" value="pulled at runtime by the generated flow when deployed to Cloudera DataFlow" style="text;html=1;strokeColor=none;fillColor=none;align=left;whiteSpace=wrap;fontFamily=Arial;fontSize=10;fontStyle=2;fontColor=#4E5661;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="310" width="510" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="nfs_bx" value="" style="rounded=1;fillColor=#F5F6F7;strokeColor=#9E9E9E;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="330" width="510" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="nfs1" value="X12 EDI (834 · 837 · 835) · HL7 v2 / FHIR feeds" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#100045;fontFamily=Arial;fontSize=11;fontColor=#100045;" vertex="1" parent="1">
+          <mxGeometry x="1195" y="345" width="480" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="nfs2" value="Payer / provider SFTP · nightly flat-file drops" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#100045;fontFamily=Arial;fontSize=11;fontColor=#100045;" vertex="1" parent="1">
+          <mxGeometry x="1195" y="382" width="480" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="nfs3" value="EHR exports (Epic · Cerner · Meditech)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#100045;fontFamily=Arial;fontSize=11;fontColor=#100045;" vertex="1" parent="1">
+          <mxGeometry x="1195" y="419" width="480" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="nfs4" value="CDC streams · Debezium · Oracle / SQL Server / DB2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#100045;fontFamily=Arial;fontSize=11;fontColor=#100045;" vertex="1" parent="1">
+          <mxGeometry x="1195" y="456" width="480" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="nfs5" value="Kafka topics · cloud buckets (S3/ADLS/GCS) · REST APIs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#100045;fontFamily=Arial;fontSize=11;fontColor=#100045;" vertex="1" parent="1">
+          <mxGeometry x="1195" y="493" width="480" height="32" as="geometry" />
+        </mxCell>
+
+        <!-- Right bottom: downstream Cloudera services -->
+        <mxCell id="ds_lbl" value="DOWNSTREAM CLOUDERA SERVICES" style="text;html=1;strokeColor=none;fillColor=none;align=left;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fontStyle=1;fontColor=#FF550C;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="540" width="500" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="ds_bx" value="" style="rounded=1;fillColor=#F0F6FF;strokeColor=#5555F9;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="565" width="510" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="dsn1" value="DataFlow (NiFi) · CDE (Spark) · CDW (Iceberg)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#5555F9;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#100045;" vertex="1" parent="1">
+          <mxGeometry x="1195" y="577" width="480" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="dsn4" value="Atlas · Ranger · SDX · audit / lineage · tag policies" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF550C;strokeColor=#FF550C;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="1195" y="613" width="480" height="35" as="geometry" />
+        </mxCell>
+
+        <!-- Bottom: underlying infra -->
+        <mxCell id="inf_lbl" value="UNDERLYING CLOUDERA AI INFRASTRUCTURE" style="text;html=1;strokeColor=none;fillColor=none;align=left;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fontStyle=1;fontColor=#FF550C;" vertex="1" parent="1">
+          <mxGeometry x="20" y="675" width="600" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="inf_bx" value="" style="rounded=1;fillColor=#100045;strokeColor=#100045;" vertex="1" parent="1">
+          <mxGeometry x="20" y="700" width="1670" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="inf1" value="Red Hat OpenShift 4.16&#10;Cloudera AI data service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EE0000;strokeColor=#EE0000;fontFamily=Arial;fontSize=13;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="40" y="720" width="380" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="inf2" value="Dell PowerEdge R760 / R760xa&#10;CPU + GPU worker nodes" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0076CE;strokeColor=#0076CE;fontFamily=Arial;fontSize=13;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="430" y="720" width="380" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="inf3" value="NVIDIA H200 GPUs&#10;LLM inference for agent + classifiers" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#76B900;strokeColor=#76B900;fontFamily=Arial;fontSize=13;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="820" y="720" width="400" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="inf4" value="Cloudera-managed storage&#10;session workspace + Iceberg sinks" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#5555F9;strokeColor=#5555F9;fontFamily=Arial;fontSize=13;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="1230" y="720" width="450" height="65" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

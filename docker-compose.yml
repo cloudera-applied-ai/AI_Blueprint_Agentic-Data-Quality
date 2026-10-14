@@ -1,0 +1,75 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      # Defaults point at Ollama running on the Docker host.
+      # For the bundled Ollama container (--profile ollama), set
+      # CLOUDERA_AI_URL=http://ollama:11434/v1. For Cloudera AI Inference,
+      # set the URL/model/key accordingly and LLM_ENDPOINT_TYPE=cloudera.
+      CLOUDERA_AI_URL: ${CLOUDERA_AI_URL:-http://host.docker.internal:11434/v1}
+      CLOUDERA_AI_MODEL: ${CLOUDERA_AI_MODEL:-qwen2.5:14b}
+      CLOUDERA_AI_KEY: ${CLOUDERA_AI_KEY:-ollama}
+      LLM_ENDPOINT_TYPE: ${LLM_ENDPOINT_TYPE:-ollama}
+      # Generic OpenAI-compatible endpoint — when set, these take precedence
+      # over the CLOUDERA_AI_* values above, e.g.:
+      #   LLM_BASE_URL=https://api.openai.com/v1 LLM_MODEL=gpt-4o-mini \
+      #   LLM_API_KEY=sk-... LLM_ENDPOINT_TYPE=openai docker compose up -d
+      LLM_BASE_URL: ${LLM_BASE_URL:-}
+      LLM_MODEL: ${LLM_MODEL:-}
+      LLM_API_KEY: ${LLM_API_KEY:-}
+    extra_hosts:
+      # Makes host.docker.internal resolve on Linux too (no-op on Docker Desktop)
+      - "host.docker.internal:host-gateway"
+    volumes:
+      # LLM settings and generated assets live in the project folder so they
+      # survive rebuilds and travel when the folder is copied elsewhere
+      - ./app/backend/settings:/app/app/backend/settings
+      - ./app/backend/flows:/app/app/backend/flows
+      - ./app/backend/spark_jobs:/app/app/backend/spark_jobs
+      - ./app/backend/metadata_files:/app/app/backend/metadata_files
+      - ./app/backend/classification_files:/app/app/backend/classification_files
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/data/status')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    restart: unless-stopped
+
+  # Optional frontend dev server with hot reload: docker compose --profile dev up -d
+  # Edit files in app/frontend/src and see changes live at http://localhost:5173
+  # (/api requests are proxied to the app container).
+  frontend-dev:
+    image: node:22-alpine
+    profiles: ["dev"]
+    working_dir: /app
+    command: sh -c "npm ci && npx vite --host 0.0.0.0 --port 5173"
+    environment:
+      BACKEND_HOST: app
+      BACKEND_PORT: 8000
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./app/frontend:/app
+      # keep Linux node_modules separate from the macOS ones on the host
+      - frontend_node_modules:/app/node_modules
+    depends_on:
+      - app
+    restart: unless-stopped
+
+  # Optional local LLM: docker compose --profile ollama up -d
+  # then: docker compose exec ollama ollama pull qwen2.5:14b
+  ollama:
+    image: ollama/ollama:latest
+    profiles: ["ollama"]
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama:/root/.ollama
+    restart: unless-stopped
+
+volumes:
+  frontend_node_modules:
+  ollama:

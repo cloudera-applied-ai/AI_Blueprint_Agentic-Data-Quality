@@ -1,0 +1,206 @@
+<mxfile host="app.diagrams.net" modified="2026-04-20T00:00:00.000Z" agent="claude" version="24.0.0" type="device">
+  <diagram id="L1" name="L1-Pattern-Highlevel">
+    <mxGraphModel dx="1700" dy="820" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1700" pageHeight="820" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- LEFT: Source systems that feed the demo + the generated NiFi flows -->
+        <mxCell id="inp_hdr" value="UPSTREAM SOURCE SYSTEMS" style="text;html=1;strokeColor=none;fillColor=none;align=center;whiteSpace=wrap;fontFamily=Arial;fontSize=13;fontStyle=1;fontColor=#FF550C;" vertex="1" parent="1">
+          <mxGeometry x="20" y="15" width="240" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="inp_sub" value="sampled by the app · pulled at runtime by the generated NiFi flow" style="text;html=1;strokeColor=none;fillColor=none;align=center;whiteSpace=wrap;fontFamily=Arial;fontSize=10;fontStyle=2;fontColor=#4E5661;" vertex="1" parent="1">
+          <mxGeometry x="20" y="37" width="240" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="inp_bx" value="" style="rounded=1;fillColor=#F5F6F7;strokeColor=#9E9E9E;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="60" width="240" height="680" as="geometry" />
+        </mxCell>
+        <mxCell id="inp1" value="X12 EDI feeds&#10;834 eligibility&#10;837 claims · 835 ERA" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#100045;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#100045;" vertex="1" parent="1">
+          <mxGeometry x="35" y="75" width="210" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="inp2" value="HL7 v2 / FHIR feeds&#10;ADT · ORU · patient&#10;provider · coverage" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#100045;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#100045;" vertex="1" parent="1">
+          <mxGeometry x="35" y="158" width="210" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="inp3" value="EHR/EMR systems&#10;Epic · Cerner · Meditech&#10;scheduled extracts" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#100045;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#100045;" vertex="1" parent="1">
+          <mxGeometry x="35" y="241" width="210" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="inp4" value="Payer / provider SFTP&#10;nightly flat-file drops&#10;pipe-delimited · CSV" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF550C;strokeColor=#FF550C;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="35" y="324" width="210" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="inp5" value="Claims / member DBs&#10;CDC via Debezium&#10;Oracle · SQL Server · DB2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#100045;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#100045;" vertex="1" parent="1">
+          <mxGeometry x="35" y="407" width="210" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="inp6" value="Enrollment REST APIs&#10;verification lookups&#10;real-time eligibility" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#100045;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#100045;" vertex="1" parent="1">
+          <mxGeometry x="35" y="490" width="210" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="inp7" value="Cloud buckets · landing&#10;S3 · ADLS · GCS&#10;batch payload drops" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#100045;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#100045;" vertex="1" parent="1">
+          <mxGeometry x="35" y="573" width="210" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="inp8" value="Kafka streams · events&#10;member updates&#10;prior-auth · adjudication" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#100045;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#100045;" vertex="1" parent="1">
+          <mxGeometry x="35" y="656" width="210" height="72" as="geometry" />
+        </mxCell>
+
+        <!-- CENTER: The Application (generic pattern) -->
+        <mxCell id="app_hdr" value="APPLICATION PATTERN · running inside a Cloudera AI session" style="text;html=1;strokeColor=none;fillColor=none;align=center;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fontStyle=1;fontColor=#FF550C;" vertex="1" parent="1">
+          <mxGeometry x="280" y="20" width="980" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="app_bx" value="" style="rounded=1;fillColor=#100045;strokeColor=#100045;" vertex="1" parent="1">
+          <mxGeometry x="280" y="45" width="980" height="690" as="geometry" />
+        </mxCell>
+
+        <!-- Frontend band -->
+        <mxCell id="fe_lbl" value="FRONTEND · SPA served on CDSW_APP_PORT" style="text;html=1;strokeColor=none;fillColor=none;align=left;whiteSpace=wrap;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#FF8756;" vertex="1" parent="1">
+          <mxGeometry x="300" y="60" width="600" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="fe1" value="Single-page app (React · Vue · Angular)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FFFFFF;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#100045;" vertex="1" parent="1">
+          <mxGeometry x="300" y="80" width="465" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="fe2" value="Dev server / static build · Vite · /api proxy" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FFFFFF;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#100045;" vertex="1" parent="1">
+          <mxGeometry x="770" y="80" width="470" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- API band -->
+        <mxCell id="api_lbl" value="API LAYER · Python FastAPI / Uvicorn · loopback 127.0.0.1" style="text;html=1;strokeColor=none;fillColor=none;align=left;whiteSpace=wrap;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#FF8756;" vertex="1" parent="1">
+          <mxGeometry x="300" y="140" width="800" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="api1" value="REST endpoints · /api/*" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FFFFFF;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#100045;" vertex="1" parent="1">
+          <mxGeometry x="300" y="160" width="300" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="api2" value="SSE streaming endpoint (chat)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF550C;strokeColor=#FF550C;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="605" y="160" width="310" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="api3" value="CRUD endpoints per artifact type" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FFFFFF;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#100045;" vertex="1" parent="1">
+          <mxGeometry x="920" y="160" width="320" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- Agent band -->
+        <mxCell id="ag_lbl" value="AGENT LAYER · iterative tool-calling loop · OpenAI-compatible function calling" style="text;html=1;strokeColor=none;fillColor=none;align=left;whiteSpace=wrap;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#FF8756;" vertex="1" parent="1">
+          <mxGeometry x="300" y="215" width="900" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="ag_bx" value="" style="rounded=1;fillColor=#FF550C;strokeColor=#FF550C;" vertex="1" parent="1">
+          <mxGeometry x="300" y="235" width="940" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="ag_title" value="DQ-focused tool-calling loop · system prompt + tool specs · max iterations · SSE deltas" style="text;html=1;strokeColor=none;fillColor=none;align=left;whiteSpace=wrap;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="315" y="245" width="900" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="ag1" value="Analyzer tools&#10;SQL · profile · detect quality issues · summarize" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FFFFFF;fontFamily=Arial;fontSize=12;fontColor=#100045;" vertex="1" parent="1">
+          <mxGeometry x="315" y="270" width="290" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="ag2" value="Remediation generators&#10;NiFi flow · CDE Spark · YAML dict" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF5F0;strokeColor=#FFF5F0;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#FF550C;" vertex="1" parent="1">
+          <mxGeometry x="615" y="270" width="290" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="ag3" value="Classifier · governance&#10;sensitivity · semantic · HL7/FHIR tags" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FFFFFF;fontFamily=Arial;fontSize=12;fontColor=#100045;" vertex="1" parent="1">
+          <mxGeometry x="915" y="270" width="310" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- Services band -->
+        <mxCell id="sv_lbl" value="DOMAIN SERVICES" style="text;html=1;strokeColor=none;fillColor=none;align=left;whiteSpace=wrap;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#FF8756;" vertex="1" parent="1">
+          <mxGeometry x="300" y="350" width="400" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="sv1" value="Data loaders &amp; profilers&#10;(embedded + lakehouse reads)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FFFFFF;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#100045;" vertex="1" parent="1">
+          <mxGeometry x="300" y="370" width="225" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="sv2" value="Artifact generators&#10;flows · jobs · YAML · code" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FFFFFF;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#100045;" vertex="1" parent="1">
+          <mxGeometry x="535" y="370" width="225" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="sv3" value="Classifiers &amp; validators&#10;ML + LLM · rule engines" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FFFFFF;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#100045;" vertex="1" parent="1">
+          <mxGeometry x="770" y="370" width="225" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="sv4" value="Integration adapters&#10;NiFi · CDE · CDW · Atlas" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FFFFFF;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#100045;" vertex="1" parent="1">
+          <mxGeometry x="1005" y="370" width="235" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Data + Persistence band -->
+        <mxCell id="dp_lbl" value="DATA ENGINE &amp; ARTIFACT STORE" style="text;html=1;strokeColor=none;fillColor=none;align=left;whiteSpace=wrap;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#FF8756;" vertex="1" parent="1">
+          <mxGeometry x="300" y="450" width="400" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="dp1" value="Embedded engine (DuckDB / SQLite) or Cloudera lakehouse connection" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#5555F9;strokeColor=#5555F9;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="300" y="470" width="465" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="dp2" value="Versioned artifact store · manifest.json + {uuid}/v{N}.json" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#5555F9;strokeColor=#5555F9;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="770" y="470" width="470" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- LLM integration band -->
+        <mxCell id="llm_lbl" value="LLM INTEGRATION · Cloudera AI Inference Service (OpenAI-compatible)" style="text;html=1;strokeColor=none;fillColor=none;align=left;whiteSpace=wrap;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#FF8756;" vertex="1" parent="1">
+          <mxGeometry x="300" y="535" width="800" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="llm1" value="Cloudera AI Inference Service&#10;NVIDIA NIM on H200 · OpenAI-compatible /v1&#10;Bearer JWT from /tmp/jwt" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FFFFFF;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#100045;" vertex="1" parent="1">
+          <mxGeometry x="300" y="555" width="500" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="llm2" value="Model registry&#10;NGC · Cloudera model catalog" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FFFFFF;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#100045;" vertex="1" parent="1">
+          <mxGeometry x="810" y="555" width="220" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="llm3" value="Runtime re-config endpoint&#10;model swap without restart" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FFFFFF;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#100045;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="555" width="200" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Runtime platform band -->
+        <mxCell id="rt_lbl" value="RUNTIME PLATFORM" style="text;html=1;strokeColor=none;fillColor=none;align=left;whiteSpace=wrap;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#FF8756;" vertex="1" parent="1">
+          <mxGeometry x="300" y="640" width="400" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="rt1" value="Cloudera AI · CDSW session · .project-metadata.yaml · launch.py &#10;frontend on CDSW_APP_PORT · backend on 127.0.0.1:8090 (loopback)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1F2A32;strokeColor=#1F2A32;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="300" y="660" width="940" height="75" as="geometry" />
+        </mxCell>
+
+        <!-- RIGHT: Outputs and downstream -->
+        <mxCell id="out_hdr" value="GENERATED ARTIFACTS + DOWNSTREAM CLOUDERA SERVICES" style="text;html=1;strokeColor=none;fillColor=none;align=center;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fontStyle=1;fontColor=#FF550C;" vertex="1" parent="1">
+          <mxGeometry x="1270" y="20" width="410" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="out_bx" value="" style="rounded=1;fillColor=#F5F6F7;strokeColor=#9E9E9E;" vertex="1" parent="1">
+          <mxGeometry x="1280" y="45" width="400" height="690" as="geometry" />
+        </mxCell>
+        <mxCell id="out1" value="Streaming pipeline artifact&#10;NiFi v2 VersionedDataflow JSON&#10;→ Cloudera DataFlow" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FF550C;fontFamily=Arial;fontSize=13;fontStyle=1;fontColor=#100045;" vertex="1" parent="1">
+          <mxGeometry x="1295" y="70" width="370" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="out2" value="Batch pipeline artifact&#10;PySpark script + CDE job definition&#10;→ Cloudera Data Engineering" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FF550C;fontFamily=Arial;fontSize=13;fontStyle=1;fontColor=#100045;" vertex="1" parent="1">
+          <mxGeometry x="1295" y="185" width="370" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="out3" value="Governance artifact&#10;YAML data dictionary · profiling stats&#10;→ Atlas · Collibra · dbt" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FF550C;fontFamily=Arial;fontSize=13;fontStyle=1;fontColor=#100045;" vertex="1" parent="1">
+          <mxGeometry x="1295" y="300" width="370" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="out4" value="Tagging / classification artifact&#10;sensitivity · semantic · regulatory tags&#10;→ Ranger · Atlas tag policies" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FF550C;fontFamily=Arial;fontSize=13;fontStyle=1;fontColor=#100045;" vertex="1" parent="1">
+          <mxGeometry x="1295" y="415" width="370" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="out5" value="Query-ready tables&#10;Iceberg land in Open Data Lakehouse&#10;→ CDW · Impala · Spark · Flink" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FF550C;fontFamily=Arial;fontSize=13;fontStyle=1;fontColor=#100045;" vertex="1" parent="1">
+          <mxGeometry x="1295" y="530" width="370" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="out6" value="All artifacts are versioned, cloneable,&#10;and importable into downstream Cloudera services" style="text;html=1;strokeColor=none;fillColor=none;align=center;whiteSpace=wrap;fontFamily=Arial;fontSize=11;fontStyle=2;fontColor=#4E5661;" vertex="1" parent="1">
+          <mxGeometry x="1295" y="650" width="370" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Flow arrows -->
+        <mxCell id="arr_in" value="" style="endArrow=classic;html=1;strokeColor=#FF550C;strokeWidth=3;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="265" y="400" as="sourcePoint" />
+            <mxPoint x="295" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arr_out" value="" style="endArrow=classic;html=1;strokeColor=#FF550C;strokeWidth=3;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1245" y="400" as="sourcePoint" />
+            <mxPoint x="1275" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Bottom partner band -->
+        <mxCell id="pn_hdr" value="UNDERLYING CLOUDERA AI INFRASTRUCTURE" style="text;html=1;strokeColor=none;fillColor=none;align=center;whiteSpace=wrap;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#100045;" vertex="1" parent="1">
+          <mxGeometry x="280" y="745" width="980" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="pn_bx" value="" style="rounded=1;fillColor=#FFFFFF;strokeColor=#100045;strokeWidth=1;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="775" width="980" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="pn1" value="NVIDIA GPUs (H200) — LLM inference" style="text;html=1;strokeColor=none;fillColor=none;align=center;whiteSpace=wrap;fontFamily=Arial;fontSize=11;fontColor=#76B900;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="290" y="780" width="320" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="pn2" value="Dell PowerEdge — physical host" style="text;html=1;strokeColor=none;fillColor=none;align=center;whiteSpace=wrap;fontFamily=Arial;fontSize=11;fontColor=#0076CE;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="620" y="780" width="310" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="pn3" value="Red Hat OpenShift — Cloudera AI control plane" style="text;html=1;strokeColor=none;fillColor=none;align=center;whiteSpace=wrap;fontFamily=Arial;fontSize=11;fontColor=#EE0000;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="940" y="780" width="310" height="25" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

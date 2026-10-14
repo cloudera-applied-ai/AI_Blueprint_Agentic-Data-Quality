@@ -1,0 +1,61 @@
+# Cloudera Blueprint catalog metadata
+# Populate fields used by the master blueprint website and internal catalog.
+
+# --- Identity ---
+name: "Agentic Data Quality"
+slug: "agentic-data-quality"    # URL-safe repo / catalog identifier
+description: "Agentic data-quality assistant for healthcare AGT member-eligibility data: DuckDB profiling, sklearn+LLM column classification, and chat-generated NiFi v2 flows, CDE Spark jobs, and YAML metadata for remediation."
+reprise_link: ""                              # Public reprise link
+
+# --- Classification (website filters) ---
+catalog_classification:
+  - Launchable (AMP)                          # Options: Enterprise Blueprint | Research | Launchable (AMP) | Developer Example
+launchable: true                              # true | false
+lifecycle_status: Active                      # e.g., Active | Deprecated
+
+# --- Industry & alignment ---
+industry: Healthcare & Life Sciences          # e.g., General | Telecom | Financial Services | Healthcare & Life Sciences | Retail | Media | Physical AI & Robotics
+industry_alignment: "Vertical"                # Horizontal | Vertical
+target_vertical: "Healthcare Payers"          # Optional finer-grained vertical
+
+# --- Tags (website search & browse) ---
+tags:
+  - data-quality
+  - agentic-ai
+  - llm
+  - tool-calling
+  - duckdb
+  - fastapi
+  - react
+  - nifi
+  - spark
+  - column-classification
+  - healthcare
+  - member-eligibility
+  - sse-streaming
+
+# --- Relationships ---
+product_mapping:                              # Cloudera products used
+  - Cloudera AI (Cloudera Machine Learning)
+  - Cloudera AI Inference
+  - Cloudera DataFlow (Apache NiFi)
+  - Cloudera Data Engineering (Spark)
+model_dependencies:                           # Models, embeddings, or external AI services, if any. Comment out if none.
+  - OpenAI-compatible chat LLM with tool calling (Cloudera AI Inference, Ollama qwen2.5:14b default, or OpenAI)
+  - Bundled sklearn column classifiers (semantic_type.pkl, format.pkl, sensitivity.pkl)
+
+# --- Provenance ---
+publisher: cloudera                           # cloudera | partner-name
+source: Internal                              # Internal | Partner | NVIDIA Adaptation | Customer
+
+# --- Repository & assets ---
+public_github_link: "https://github.com/cloudera-applied-ai/AI_Blueprint_Agentic-Data-Quality"
+#private_github_link: ""                      # If applicable, original repo during development
+
+# --- Ownership ---
+maintainer_name: "Michael Schuler"
+
+# --- Dates ---
+date_created: "2026-07-08"
+date_updated: "2026-08-27"
+published_date: "2026-08-27"                  # Published date / last modified

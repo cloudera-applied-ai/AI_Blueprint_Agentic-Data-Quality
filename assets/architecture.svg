@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5f6b7a"/>
+    </marker>
+    <marker id="arrowO" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#f96702"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="960" height="540" fill="#fafbfc"/>
+  <text x="480" y="28" text-anchor="middle" font-size="18" font-weight="700" fill="#232f3e">Data Quality AI — Target Architecture on Cloudera</text>
+  <text x="480" y="47" text-anchor="middle" font-size="11" fill="#5f6b7a">An agent finds quality issues in incoming data feeds, then generates the Cloudera pipelines and policies that fix them</text>
+
+  <!-- Sources -->
+  <text x="84" y="104" text-anchor="middle" font-size="10" font-weight="700" fill="#5f6b7a" letter-spacing="1">SOURCES</text>
+  <rect x="24" y="112" width="120" height="44" rx="8" fill="#ffffff" stroke="#8aa2b8"/>
+  <text x="84" y="130" text-anchor="middle" font-size="11" font-weight="600" fill="#232f3e">Partner feeds</text>
+  <text x="84" y="146" text-anchor="middle" font-size="10" fill="#5f6b7a">EDI · XML · JSON</text>
+  <rect x="24" y="162" width="120" height="44" rx="8" fill="#ffffff" stroke="#8aa2b8"/>
+  <text x="84" y="180" text-anchor="middle" font-size="11" font-weight="600" fill="#232f3e">Events &amp; APIs</text>
+  <text x="84" y="196" text-anchor="middle" font-size="10" fill="#5f6b7a">Kafka · REST</text>
+  <rect x="24" y="212" width="120" height="44" rx="8" fill="#ffffff" stroke="#8aa2b8"/>
+  <text x="84" y="230" text-anchor="middle" font-size="11" font-weight="600" fill="#232f3e">File drops</text>
+  <text x="84" y="246" text-anchor="middle" font-size="10" fill="#5f6b7a">SFTP · CSV · flat files</text>
+  <rect x="24" y="262" width="120" height="44" rx="8" fill="#ffffff" stroke="#8aa2b8"/>
+  <text x="84" y="280" text-anchor="middle" font-size="11" font-weight="600" fill="#232f3e">Operational DBs</text>
+  <text x="84" y="296" text-anchor="middle" font-size="10" fill="#5f6b7a">CDC · Oracle · DB2</text>
+  <rect x="24" y="312" width="120" height="44" rx="8" fill="#ffffff" stroke="#8aa2b8"/>
+  <text x="84" y="330" text-anchor="middle" font-size="11" font-weight="600" fill="#232f3e">Reference data</text>
+  <text x="84" y="346" text-anchor="middle" font-size="10" fill="#5f6b7a">dictionaries · codes</text>
+
+  <polyline points="144,134 152,134 152,334 144,334" fill="none" stroke="#5f6b7a" stroke-width="1.4"/>
+  <line x1="144" y1="184" x2="152" y2="184" stroke="#5f6b7a" stroke-width="1.4"/>
+  <line x1="144" y1="234" x2="152" y2="234" stroke="#5f6b7a" stroke-width="1.4"/>
+  <line x1="144" y1="284" x2="152" y2="284" stroke="#5f6b7a" stroke-width="1.4"/>
+  <line x1="152" y1="149" x2="172" y2="149" stroke="#5f6b7a" stroke-width="1.6" marker-end="url(#arrow)"/>
+
+  <!-- Platform container -->
+  <rect x="160" y="62" width="776" height="338" rx="14" fill="#ffffff" stroke="#f96702" stroke-width="2"/>
+  <text x="176" y="84" font-size="14" font-weight="700" fill="#f96702">Cloudera Data Platform — on-prem (OpenShift · NVIDIA H200) or public cloud</text>
+
+  <!-- Data pipeline row -->
+  <text x="176" y="104" font-size="10" font-weight="700" fill="#5f6b7a" letter-spacing="1">DATA PIPELINE — RUNS THE ARTIFACTS THE AGENT GENERATES</text>
+
+  <rect x="176" y="112" width="174" height="74" rx="8" fill="#eef3f8" stroke="#8aa2b8"/>
+  <text x="263" y="134" text-anchor="middle" font-size="11" font-weight="700" fill="#232f3e">Cloudera DataFlow · NiFi</text>
+  <text x="263" y="152" text-anchor="middle" font-size="10" fill="#5f6b7a">runs generated NiFi v2 flows</text>
+  <text x="263" y="168" text-anchor="middle" font-size="10" fill="#5f6b7a">SFTP · API · Kafka · CDC → land</text>
+
+  <rect x="366" y="112" width="174" height="74" rx="8" fill="#eef3f8" stroke="#8aa2b8"/>
+  <text x="453" y="134" text-anchor="middle" font-size="11" font-weight="700" fill="#232f3e">Open Data Lakehouse</text>
+  <text x="453" y="152" text-anchor="middle" font-size="10" fill="#5f6b7a">Apache Iceberg on Ozone / S3</text>
+  <text x="453" y="168" text-anchor="middle" font-size="10" fill="#5f6b7a">raw → validated → curated</text>
+
+  <rect x="556" y="112" width="174" height="74" rx="8" fill="#eef3f8" stroke="#8aa2b8"/>
+  <text x="643" y="134" text-anchor="middle" font-size="11" font-weight="700" fill="#232f3e">Cloudera Data Engineering</text>
+  <text x="643" y="152" text-anchor="middle" font-size="10" fill="#5f6b7a">runs generated Spark jobs</text>
+  <text x="643" y="168" text-anchor="middle" font-size="10" fill="#5f6b7a">cleanse · dedupe · conform</text>
+
+  <rect x="746" y="112" width="174" height="74" rx="8" fill="#eef3f8" stroke="#8aa2b8"/>
+  <text x="833" y="134" text-anchor="middle" font-size="11" font-weight="700" fill="#232f3e">Cloudera Data Warehouse</text>
+  <text x="833" y="152" text-anchor="middle" font-size="10" fill="#5f6b7a">Impala on curated Iceberg</text>
+  <text x="833" y="168" text-anchor="middle" font-size="10" fill="#5f6b7a">trusted data for BI and AI</text>
+
+  <line x1="350" y1="149" x2="362" y2="149" stroke="#5f6b7a" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <line x1="540" y1="149" x2="552" y2="149" stroke="#5f6b7a" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <line x1="730" y1="149" x2="742" y2="149" stroke="#5f6b7a" stroke-width="1.6" marker-end="url(#arrow)"/>
+
+  <!-- AI row -->
+  <rect x="176" y="226" width="500" height="96" rx="10" fill="#fdf3ec" stroke="#e0b394" stroke-width="1.5"/>
+  <text x="190" y="246" font-size="12" font-weight="700" fill="#232f3e">Cloudera AI — Data Quality Agent (Application)</text>
+
+  <rect x="188" y="258" width="112" height="52" rx="7" fill="#ffffff" stroke="#e0b394"/>
+  <text x="244" y="278" text-anchor="middle" font-size="11" font-weight="600" fill="#232f3e">Profile · detect</text>
+  <text x="244" y="295" text-anchor="middle" font-size="10" fill="#5f6b7a">SQL on samples</text>
+  <rect x="310" y="258" width="112" height="52" rx="7" fill="#ffffff" stroke="#e0b394"/>
+  <text x="366" y="278" text-anchor="middle" font-size="11" font-weight="600" fill="#232f3e">Classify</text>
+  <text x="366" y="295" text-anchor="middle" font-size="10" fill="#5f6b7a">PII · sensitivity tags</text>
+  <rect x="432" y="258" width="112" height="52" rx="7" fill="#ffffff" stroke="#e0b394"/>
+  <text x="488" y="278" text-anchor="middle" font-size="11" font-weight="600" fill="#232f3e">Generate fixes</text>
+  <text x="488" y="295" text-anchor="middle" font-size="10" fill="#5f6b7a">NiFi · Spark · YAML</text>
+  <rect x="554" y="258" width="112" height="52" rx="7" fill="#ffffff" stroke="#e0b394"/>
+  <text x="610" y="278" text-anchor="middle" font-size="11" font-weight="600" fill="#232f3e">Version · review</text>
+  <text x="610" y="295" text-anchor="middle" font-size="10" fill="#5f6b7a">asset history</text>
+
+  <line x1="300" y1="284" x2="308" y2="284" stroke="#5f6b7a" stroke-width="1.4" marker-end="url(#arrow)"/>
+  <line x1="422" y1="284" x2="430" y2="284" stroke="#5f6b7a" stroke-width="1.4" marker-end="url(#arrow)"/>
+  <line x1="544" y1="284" x2="552" y2="284" stroke="#5f6b7a" stroke-width="1.4" marker-end="url(#arrow)"/>
+
+  <rect x="700" y="226" width="220" height="96" rx="10" fill="#eef3f8" stroke="#8aa2b8"/>
+  <text x="810" y="248" text-anchor="middle" font-size="12" font-weight="700" fill="#232f3e">Cloudera AI Inference</text>
+  <text x="810" y="266" text-anchor="middle" font-size="10" fill="#5f6b7a">NVIDIA NIM on H200 GPUs</text>
+  <text x="810" y="282" text-anchor="middle" font-size="10" fill="#5f6b7a">OpenAI-compatible · tool calling</text>
+  <text x="810" y="298" text-anchor="middle" font-size="10" fill="#5f6b7a">agent + classifier fallback</text>
+  <line x1="676" y1="274" x2="696" y2="274" stroke="#f96702" stroke-width="1.8" marker-end="url(#arrowO)"/>
+
+  <!-- Lakehouse → agent, agent → pipeline -->
+  <line x1="420" y1="186" x2="420" y2="222" stroke="#5f6b7a" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <text x="426" y="209" font-size="10" fill="#5f6b7a">read samples</text>
+  <line x1="250" y1="226" x2="250" y2="190" stroke="#f96702" stroke-width="1.8" stroke-dasharray="5,3" marker-end="url(#arrowO)"/>
+  <text x="256" y="209" font-size="10" fill="#f96702">deploy flow</text>
+  <line x1="600" y1="226" x2="600" y2="190" stroke="#f96702" stroke-width="1.8" stroke-dasharray="5,3" marker-end="url(#arrowO)"/>
+  <text x="606" y="209" font-size="10" fill="#f96702">deploy job</text>
+
+  <!-- SDX -->
+  <rect x="176" y="346" width="744" height="40" rx="8" fill="#eef3f8" stroke="#8aa2b8"/>
+  <text x="610" y="370" text-anchor="middle" font-size="11" fill="#232f3e"><tspan font-weight="700">SDX</tspan> — Atlas: lineage + data dictionary · Ranger: tag-based PII / sensitive-data masking · audit</text>
+  <line x1="620" y1="322" x2="620" y2="342" stroke="#f96702" stroke-width="1.8" stroke-dasharray="5,3" marker-end="url(#arrowO)"/>
+  <text x="632" y="337" font-size="10" fill="#f96702">tags · dictionary</text>
+
+  <!-- Consumers -->
+  <rect x="176" y="440" width="240" height="52" rx="10" fill="#fdf3ec" stroke="#f96702" stroke-width="1.5"/>
+  <text x="296" y="462" text-anchor="middle" font-size="14" font-weight="600" fill="#232f3e">Data stewards · engineers</text>
+  <text x="296" y="480" text-anchor="middle" font-size="11" fill="#5f6b7a">review issues · approve fixes</text>
+  <line x1="296" y1="438" x2="296" y2="326" stroke="#f96702" stroke-width="1.8" marker-end="url(#arrowO)"/>
+
+  <!-- Footer -->
+  <rect x="440" y="436" width="496" height="62" rx="8" fill="#ffffff" stroke="#c3ccd6"/>
+  <text x="688" y="457" text-anchor="middle" font-size="11" fill="#5f6b7a">Demo today → Cloudera: file upload → DataFlow landing · DuckDB → Iceberg</text>
+  <text x="688" y="473" text-anchor="middle" font-size="11" fill="#5f6b7a">Demo dataset: healthcare eligibility (AGT) — the pattern applies to any industry</text>
+  <text x="688" y="489" text-anchor="middle" font-size="11" fill="#5f6b7a">Dashed orange = artifacts the agent generates and deploys</text>
+</svg>

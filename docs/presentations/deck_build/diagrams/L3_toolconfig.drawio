@@ -1,0 +1,100 @@
+<mxfile host="app.diagrams.net" modified="2026-04-20T00:00:00.000Z" agent="claude" version="24.0.0" type="device">
+  <diagram id="L3" name="L3-Deploy-Config">
+    <mxGraphModel dx="1700" dy="820" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1700" pageHeight="820" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- 4x3 grid of deployment-config cards -->
+
+        <!-- ROW 1 -->
+        <mxCell id="c1h" value="Project manifest · .project-metadata.yaml" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#100045;strokeColor=#100045;fontFamily=Arial;fontSize=14;fontStyle=1;fontColor=#FFFFFF;align=left;spacingLeft=14;" vertex="1" parent="1">
+          <mxGeometry x="20" y="20" width="415" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="c1b" value="• Declares runtime: JupyterLab · Python 3.12 · Std&#10;• Declares two tasks:&#10;   — Install Dependencies (run_session)&#10;   — Launch App (start_application)&#10;• Gives Cloudera the commands to build &amp; run&#10;• Single file = whole AMP (Applied ML Prototype)&#10;• Versioned with the code, reproducible deploys" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#100045;fontFamily=Arial;fontSize=12;fontColor=#100045;align=left;verticalAlign=top;spacingLeft=14;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="20" y="56" width="415" height="210" as="geometry" />
+        </mxCell>
+
+        <mxCell id="c2h" value="Process supervisor · launch.py" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#100045;strokeColor=#100045;fontFamily=Arial;fontSize=14;fontStyle=1;fontColor=#FFFFFF;align=left;spacingLeft=14;" vertex="1" parent="1">
+          <mxGeometry x="445" y="20" width="415" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="c2b" value="• One Python script starts backend + frontend&#10;• Reads CDSW_APP_PORT to bind the frontend&#10;• Handles SIGTERM / SIGINT for graceful stop&#10;• Keeps stdout+stderr attached for CDSW logs&#10;• Fails fast if a child dies · non-zero exit code&#10;• Minimal deps — stdlib only" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#100045;fontFamily=Arial;fontSize=12;fontColor=#100045;align=left;verticalAlign=top;spacingLeft=14;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="445" y="56" width="415" height="210" as="geometry" />
+        </mxCell>
+
+        <mxCell id="c3h" value="Networking · CDSW_APP_PORT + proxy" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#100045;strokeColor=#100045;fontFamily=Arial;fontSize=14;fontStyle=1;fontColor=#FFFFFF;align=left;spacingLeft=14;" vertex="1" parent="1">
+          <mxGeometry x="870" y="20" width="415" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="c3b" value="• Frontend binds 0.0.0.0:${CDSW_APP_PORT}&#10;• Backend binds 127.0.0.1:8090 (loopback only)&#10;• Frontend proxies /api to backend (Vite / nginx)&#10;• Browser cannot reach backend directly in CDSW&#10;• vite.config.ts allowedHosts: 'all'&#10;   (accepts Cloudera's reverse-proxy domain)&#10;• SSE passes through proxy with no buffering tweaks" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#100045;fontFamily=Arial;fontSize=12;fontColor=#100045;align=left;verticalAlign=top;spacingLeft=14;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="870" y="56" width="415" height="210" as="geometry" />
+        </mxCell>
+
+        <mxCell id="c4h" value="Dependencies · 01_install/install.py" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#100045;strokeColor=#100045;fontFamily=Arial;fontSize=14;fontStyle=1;fontColor=#FFFFFF;align=left;spacingLeft=14;" vertex="1" parent="1">
+          <mxGeometry x="1295" y="20" width="395" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="c4b" value="• Installs Node.js (via nvm or apt)&#10;• pip install -r requirements.txt&#10;• npm install + npm run build&#10;• Reruns cheaply — idempotent checks&#10;• Keeps install step separate from launch&#10;   (so CDSW's &quot;Install Dependencies&quot; task&#10;   is fast and bounded)&#10;• Pins versions · reproducible builds" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#100045;fontFamily=Arial;fontSize=12;fontColor=#100045;align=left;verticalAlign=top;spacingLeft=14;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="1295" y="56" width="395" height="210" as="geometry" />
+        </mxCell>
+
+        <!-- ROW 2 -->
+        <mxCell id="c5h" value="Cloudera AI Inference integration" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FF550C;strokeColor=#FF550C;fontFamily=Arial;fontSize=14;fontStyle=1;fontColor=#FFFFFF;align=left;spacingLeft=14;" vertex="1" parent="1">
+          <mxGeometry x="20" y="278" width="415" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="c5b" value="• Cloudera AI Inference Service as the LLM backend&#10;• NVIDIA NIM on H200 · OpenAI-compatible&#10;   POST /v1/chat/completions (+ /embeddings)&#10;• Bearer JWT pulled from /tmp/jwt (mounted by CDSW)&#10;• Env vars: CLOUDERA_AI_URL · _MODEL · _KEY&#10;   · LLM_ENDPOINT_TYPE&#10;• Runtime swap via /api/chat/configure (no restart)&#10;• llm_settings.json persists the last chosen model" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FF550C;fontFamily=Arial;fontSize=12;fontColor=#100045;align=left;verticalAlign=top;spacingLeft=14;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="20" y="314" width="415" height="210" as="geometry" />
+        </mxCell>
+
+        <mxCell id="c6h" value="Agent loop config" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FF550C;strokeColor=#FF550C;fontFamily=Arial;fontSize=14;fontStyle=1;fontColor=#FFFFFF;align=left;spacingLeft=14;" vertex="1" parent="1">
+          <mxGeometry x="445" y="278" width="415" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="c6b" value="• Max iterations per message (cap runaway cost)&#10;• OpenAI function-calling primary mode&#10;• Fallback parser for small LLMs that emit tool&#10;   calls as plain JSON in content&#10;• Whitelist of valid tool names — ignore unknown&#10;• SSE deltas for tokens + tool-call traces&#10;• Tool JSON-Schemas validate args before dispatch&#10;• System prompt includes dataset field table" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FF550C;fontFamily=Arial;fontSize=12;fontColor=#100045;align=left;verticalAlign=top;spacingLeft=14;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="445" y="314" width="415" height="210" as="geometry" />
+        </mxCell>
+
+        <mxCell id="c7h" value="Versioned artifact store" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#5555F9;strokeColor=#5555F9;fontFamily=Arial;fontSize=14;fontStyle=1;fontColor=#FFFFFF;align=left;spacingLeft=14;" vertex="1" parent="1">
+          <mxGeometry x="870" y="278" width="415" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="c7b" value="• One pattern across every artifact type:&#10;   manifest.json + {uuid}/v{N}.json&#10;• In-memory manifest cache · O(1) lookups&#10;• threading.Lock for concurrent writes&#10;• UUID regex validation at every entry point&#10;   (blocks path traversal via artifact ID)&#10;• Clone / version / delete / edit operations&#10;• Survives session restarts (lives in project dir)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#5555F9;fontFamily=Arial;fontSize=12;fontColor=#100045;align=left;verticalAlign=top;spacingLeft=14;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="870" y="314" width="415" height="210" as="geometry" />
+        </mxCell>
+
+        <mxCell id="c8h" value="Data engine pattern" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#5555F9;strokeColor=#5555F9;fontFamily=Arial;fontSize=14;fontStyle=1;fontColor=#FFFFFF;align=left;spacingLeft=14;" vertex="1" parent="1">
+          <mxGeometry x="1295" y="278" width="395" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="c8b" value="• In-session DuckDB for fast iterative analysis&#10;   (no external DB dependency during dev)&#10;• Scale-up path: swap to Impala / Spark on CDW&#10;   via the same DB-API-2 / SQLAlchemy interface&#10;• Bounded queries: timeout · row limit&#10;• Field-name whitelist for SQL injection defense&#10;• Columns loaded as strings; typing deferred to&#10;   generators (avoids brittle coercion at load)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#5555F9;fontFamily=Arial;fontSize=12;fontColor=#100045;align=left;verticalAlign=top;spacingLeft=14;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="1295" y="314" width="395" height="210" as="geometry" />
+        </mxCell>
+
+        <!-- ROW 3 -->
+        <mxCell id="c9h" value="Frontend packaging" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#100045;strokeColor=#100045;fontFamily=Arial;fontSize=14;fontStyle=1;fontColor=#FFFFFF;align=left;spacingLeft=14;" vertex="1" parent="1">
+          <mxGeometry x="20" y="536" width="415" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="c9b" value="• Vite dev server in sessions (hot reload)&#10;• OR static build served by backend in prod&#10;• TypeScript · typed API client + SSE hooks&#10;• /api proxy removes CORS headaches in session&#10;• allowedHosts: 'all' to accept CDSW proxy host&#10;• Source maps off in prod build · tree-shaken&#10;• Single SPA = single CDSW_APP_PORT binding" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#100045;fontFamily=Arial;fontSize=12;fontColor=#100045;align=left;verticalAlign=top;spacingLeft=14;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="20" y="572" width="415" height="210" as="geometry" />
+        </mxCell>
+
+        <mxCell id="c10h" value="Integration with downstream Cloudera" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#5555F9;strokeColor=#5555F9;fontFamily=Arial;fontSize=14;fontStyle=1;fontColor=#FFFFFF;align=left;spacingLeft=14;" vertex="1" parent="1">
+          <mxGeometry x="445" y="536" width="415" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="c10b" value="• NiFi flows → importable into Cloudera DataFlow&#10;   as VersionedDataflow JSON&#10;• Spark jobs → CDE job definitions (PySpark)&#10;   submittable via CDE CLI / API&#10;• YAML data dictionaries → Atlas / dbt / Collibra&#10;• Classifications → Ranger / Atlas tag policies&#10;• Output tables → Iceberg in Open Data Lakehouse&#10;   readable by CDW · Impala · Spark · Flink" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#5555F9;fontFamily=Arial;fontSize=12;fontColor=#100045;align=left;verticalAlign=top;spacingLeft=14;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="445" y="572" width="415" height="210" as="geometry" />
+        </mxCell>
+
+        <mxCell id="c11h" value="Identity &amp; secrets" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FF550C;strokeColor=#FF550C;fontFamily=Arial;fontSize=14;fontStyle=1;fontColor=#FFFFFF;align=left;spacingLeft=14;" vertex="1" parent="1">
+          <mxGeometry x="870" y="536" width="415" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="c11b" value="• CDSW injects CDP JWT at /tmp/jwt in session&#10;• App reads JWT at startup &amp; on refresh&#10;• Forwarded as Bearer to Cloudera AI Inference&#10;• No long-lived API keys in the repo&#10;• Env vars for endpoint URL + model name only&#10;• Runtime settings persisted (llm_settings.json)&#10;• Knox / OIDC for downstream Cloudera services&#10;• Ranger policies govern Iceberg table access" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FF550C;fontFamily=Arial;fontSize=12;fontColor=#100045;align=left;verticalAlign=top;spacingLeft=14;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="870" y="572" width="415" height="210" as="geometry" />
+        </mxCell>
+
+        <mxCell id="c12h" value="Security hardening · app-wide" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1F2A32;strokeColor=#1F2A32;fontFamily=Arial;fontSize=14;fontStyle=1;fontColor=#FFFFFF;align=left;spacingLeft=14;" vertex="1" parent="1">
+          <mxGeometry x="1295" y="536" width="395" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="c12b" value="• Field-name regex before SQL interpolation&#10;• UUID validation at every store entry function&#10;• Path traversal: resolve() + startswith() guard&#10;• Output formats: Literal types + whitelist sets&#10;• Narrow exception handling · generic messages&#10;• Tool-name whitelist in agent dispatcher&#10;• /api prefix only; no direct backend exposure&#10;• Secrets via env / mounted files — never in git" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#1F2A32;fontFamily=Arial;fontSize=12;fontColor=#100045;align=left;verticalAlign=top;spacingLeft=14;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="1295" y="572" width="395" height="210" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,10 @@
+fastapi>=0.133.1
+uvicorn>=0.41.0
+sse-starlette>=3.2.0
+python-multipart>=0.0.22
+duckdb>=1.4.4
+openai>=2.24.0
+pyyaml>=6.0.3
+scikit-learn>=1.8.0
+joblib>=1.5.3
+cdpcli>=0.9.130

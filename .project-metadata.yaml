@@ -1,0 +1,43 @@
+name: Data Quality AI
+description: >-
+  Healthcare Data Quality AI application that analyzes pipe-delimited AGT data,
+  detects quality issues, and generates Apache NiFi flows and CDE Spark jobs
+  for automated remediation.
+author: Cloudera
+specification_version: 1.0
+prototype_version: 1.0
+date: "2026-02-22"
+
+runtimes:
+  - editor: JupyterLab
+    kernel: Python 3.12
+    edition: Standard
+    version: 2026.01
+    addons: []
+
+tasks:
+  - type: run_session
+    name: Install Dependencies
+    script: deploy/install.py
+    short_summary: Install all project dependencies
+    long_summary: >-
+      Installs Node.js (if not present), Python packages from
+      app/backend/requirements.txt, and frontend npm dependencies
+      from app/frontend/package.json.
+    kernel: python3
+    cpu: 2
+    memory: 4
+
+  - type: start_application
+    name: Data Quality AI
+    subdomain: dataquality-ai
+    script: app/launch.py
+    short_summary: Launch the Data Quality AI application
+    long_summary: >-
+      Starts the FastAPI backend and React frontend. The frontend
+      is served on CDSW_APP_PORT and proxies API requests to the
+      backend on port 8090.
+    kernel: python3
+    cpu: 8
+    memory: 16
+    bypass_authentication: true

@@ -1,0 +1,13 @@
+.git
+.claude
+# Never bake saved settings (API keys) into image layers — bind-mounted at runtime
+app/backend/settings
+app/backend/llm_settings.json
+**/__pycache__
+app/frontend/node_modules
+app/frontend/dist
+docs/presentations/deck_build
+docs
+*.pptx
+Dockerfile
+docker-compose.yml
